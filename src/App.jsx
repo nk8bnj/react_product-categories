@@ -2,10 +2,12 @@
 
 import React from 'react';
 
-import FilterByProductName from './components/FilterByProductName/FilterByProductName';
-import ProductsTable from './components/ProductsTable/ProductsTable';
-import FilterByOwner from './components/FilterByOwner/FilterByOwner';
+import FilterByProductName
+from './components/FilterByProductName/FilterByProductName';
+
 import FilterByCategory from './components/FilterByCategory/FilterByCategory';
+import FilterByOwner from './components/FilterByOwner/FilterByOwner';
+import ProductsTable from './components/ProductsTable/ProductsTable';
 
 import categoriesFromServer from './api/categories';
 import productsFromServer from './api/products';
@@ -41,15 +43,14 @@ export const App = () => {
     }
 
     if (selectedCategorysId.length) {
-      preparedProducts = preparedProducts.filter(product =>
-        selectedCategorysId.includes(product.category.id),
-      );
+      preparedProducts = preparedProducts
+        .filter(product => selectedCategorysId.includes(product.category.id));
     }
 
     if (searchQuery) {
-      preparedProducts = preparedProducts.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+      preparedProducts = preparedProducts
+        .filter(product => product.name.toLowerCase()
+          .includes(searchQuery.toLowerCase()));
     }
 
     return preparedProducts;
